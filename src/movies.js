@@ -59,7 +59,6 @@ if (dramaMovies.length == 0) return 0
     const dramaTotal = dramaMovies.reduce(function(totalScore, movie) {
         return totalScore + movie.score}, 0)
     const average = dramaTotal / dramaMovies.length 
-    console.log(dramaMovies)
         return +average.toFixed(2)
 
 
@@ -74,10 +73,36 @@ if (dramaMovies.length == 0) return 0
     // return average / moviesArray
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear(moviesArray) {}
-
+function orderByYear(moviesArray) {
+    const orderedByYear = moviesArray.map(value => value)
+    return orderedByYear.sort(function(a,b) {
+        if (a.year === b.year) return a.title.localeCompare(b.title) 
+        return a.year - b.year
+    }
+    )
+   
+}
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-function orderAlphabetically(moviesArray) {}
+function orderAlphabetically(moviesArray) {
+    const orderedByName = moviesArray.map(value => value.title) // copy
+    orderedByName.sort(function(a,b) { // order by name 
+    if (a>b) return 1
+    if (a<b) return -1
+    })
+    return orderedByName.slice(0,20) // return ordered by name array with 20 objects 
+
+        //return a.title.localeCompare(b.title)}) // order by title
+    //const twentyMovies = orderedByName.slice(0,20) // 20 movies
+    // if twentyMovies.length > 20 return slice(0,20)
+}
+    /*  const orderedByName = moviesArray.map(value => value) // copy
+    orderedByName.sort(function(a,b) { 
+        // console.log(a.title.localeCompare(b.title))
+        return a.title.localeCompare(b.title)}) // order by title
+    const twentyMovies = orderedByName.slice(0,20) // 20 movies 
+    // if twentyMovies.length > 20 return slice(0,20)
+    
+    return twentyMovies */
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {}
